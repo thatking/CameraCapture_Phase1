@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.GainBox = new System.Windows.Forms.GroupBox();
             this.Reset_Gain = new System.Windows.Forms.Button();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.BlueGainBox = new System.Windows.Forms.RichTextBox();
+            this.GreenGainBox = new System.Windows.Forms.RichTextBox();
+            this.RedGainBox = new System.Windows.Forms.RichTextBox();
             this.BlueGain = new System.Windows.Forms.HScrollBar();
             this.GreenGain = new System.Windows.Forms.HScrollBar();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.OffsetBox = new System.Windows.Forms.GroupBox();
             this.Reset_Offset = new System.Windows.Forms.Button();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
+            this.BlueOffsetBox = new System.Windows.Forms.RichTextBox();
+            this.GreenOffsetBox = new System.Windows.Forms.RichTextBox();
+            this.RedOffsetBox = new System.Windows.Forms.RichTextBox();
             this.BlueOffset = new System.Windows.Forms.HScrollBar();
             this.GreenOffset = new System.Windows.Forms.HScrollBar();
             this.RedOffset = new System.Windows.Forms.HScrollBar();
@@ -54,9 +54,9 @@
             // GainBox
             // 
             this.GainBox.Controls.Add(this.Reset_Gain);
-            this.GainBox.Controls.Add(this.richTextBox3);
-            this.GainBox.Controls.Add(this.richTextBox2);
-            this.GainBox.Controls.Add(this.richTextBox1);
+            this.GainBox.Controls.Add(this.BlueGainBox);
+            this.GainBox.Controls.Add(this.GreenGainBox);
+            this.GainBox.Controls.Add(this.RedGainBox);
             this.GainBox.Controls.Add(this.BlueGain);
             this.GainBox.Controls.Add(this.GreenGain);
             this.GainBox.Controls.Add(this.RedGain);
@@ -78,32 +78,32 @@
             this.Reset_Gain.UseVisualStyleBackColor = true;
             this.Reset_Gain.Click += new System.EventHandler(this.Reset_Gain_Click);
             // 
-            // richTextBox3
+            // BlueGainBox
             // 
-            this.richTextBox3.BackColor = System.Drawing.Color.Blue;
-            this.richTextBox3.Location = new System.Drawing.Point(6, 257);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(45, 49);
-            this.richTextBox3.TabIndex = 5;
-            this.richTextBox3.Text = "";
+            this.BlueGainBox.BackColor = System.Drawing.Color.Blue;
+            this.BlueGainBox.Location = new System.Drawing.Point(6, 257);
+            this.BlueGainBox.Name = "BlueGainBox";
+            this.BlueGainBox.Size = new System.Drawing.Size(63, 49);
+            this.BlueGainBox.TabIndex = 5;
+            this.BlueGainBox.Text = "";
             // 
-            // richTextBox2
+            // GreenGainBox
             // 
-            this.richTextBox2.BackColor = System.Drawing.Color.Lime;
-            this.richTextBox2.Location = new System.Drawing.Point(6, 156);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(45, 49);
-            this.richTextBox2.TabIndex = 4;
-            this.richTextBox2.Text = "";
+            this.GreenGainBox.BackColor = System.Drawing.Color.Lime;
+            this.GreenGainBox.Location = new System.Drawing.Point(6, 156);
+            this.GreenGainBox.Name = "GreenGainBox";
+            this.GreenGainBox.Size = new System.Drawing.Size(63, 49);
+            this.GreenGainBox.TabIndex = 4;
+            this.GreenGainBox.Text = "";
             // 
-            // richTextBox1
+            // RedGainBox
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Red;
-            this.richTextBox1.Location = new System.Drawing.Point(6, 60);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(45, 49);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.RedGainBox.BackColor = System.Drawing.Color.Red;
+            this.RedGainBox.Location = new System.Drawing.Point(6, 60);
+            this.RedGainBox.Name = "RedGainBox";
+            this.RedGainBox.Size = new System.Drawing.Size(63, 49);
+            this.RedGainBox.TabIndex = 3;
+            this.RedGainBox.Text = "";
             // 
             // BlueGain
             // 
@@ -128,9 +128,9 @@
             // OffsetBox
             // 
             this.OffsetBox.Controls.Add(this.Reset_Offset);
-            this.OffsetBox.Controls.Add(this.richTextBox4);
-            this.OffsetBox.Controls.Add(this.richTextBox5);
-            this.OffsetBox.Controls.Add(this.richTextBox6);
+            this.OffsetBox.Controls.Add(this.BlueOffsetBox);
+            this.OffsetBox.Controls.Add(this.GreenOffsetBox);
+            this.OffsetBox.Controls.Add(this.RedOffsetBox);
             this.OffsetBox.Controls.Add(this.BlueOffset);
             this.OffsetBox.Controls.Add(this.GreenOffset);
             this.OffsetBox.Controls.Add(this.RedOffset);
@@ -152,32 +152,32 @@
             this.Reset_Offset.UseVisualStyleBackColor = true;
             this.Reset_Offset.Click += new System.EventHandler(this.Reset_Offset_Click);
             // 
-            // richTextBox4
+            // BlueOffsetBox
             // 
-            this.richTextBox4.BackColor = System.Drawing.Color.Blue;
-            this.richTextBox4.Location = new System.Drawing.Point(6, 257);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(45, 49);
-            this.richTextBox4.TabIndex = 5;
-            this.richTextBox4.Text = "";
+            this.BlueOffsetBox.BackColor = System.Drawing.Color.Blue;
+            this.BlueOffsetBox.Location = new System.Drawing.Point(6, 257);
+            this.BlueOffsetBox.Name = "BlueOffsetBox";
+            this.BlueOffsetBox.Size = new System.Drawing.Size(70, 49);
+            this.BlueOffsetBox.TabIndex = 5;
+            this.BlueOffsetBox.Text = "";
             // 
-            // richTextBox5
+            // GreenOffsetBox
             // 
-            this.richTextBox5.BackColor = System.Drawing.Color.Lime;
-            this.richTextBox5.Location = new System.Drawing.Point(6, 156);
-            this.richTextBox5.Name = "richTextBox5";
-            this.richTextBox5.Size = new System.Drawing.Size(45, 49);
-            this.richTextBox5.TabIndex = 4;
-            this.richTextBox5.Text = "";
+            this.GreenOffsetBox.BackColor = System.Drawing.Color.Lime;
+            this.GreenOffsetBox.Location = new System.Drawing.Point(6, 156);
+            this.GreenOffsetBox.Name = "GreenOffsetBox";
+            this.GreenOffsetBox.Size = new System.Drawing.Size(70, 49);
+            this.GreenOffsetBox.TabIndex = 4;
+            this.GreenOffsetBox.Text = "";
             // 
-            // richTextBox6
+            // RedOffsetBox
             // 
-            this.richTextBox6.BackColor = System.Drawing.Color.Red;
-            this.richTextBox6.Location = new System.Drawing.Point(6, 60);
-            this.richTextBox6.Name = "richTextBox6";
-            this.richTextBox6.Size = new System.Drawing.Size(45, 49);
-            this.richTextBox6.TabIndex = 3;
-            this.richTextBox6.Text = "";
+            this.RedOffsetBox.BackColor = System.Drawing.Color.Red;
+            this.RedOffsetBox.Location = new System.Drawing.Point(6, 60);
+            this.RedOffsetBox.Name = "RedOffsetBox";
+            this.RedOffsetBox.Size = new System.Drawing.Size(70, 49);
+            this.RedOffsetBox.TabIndex = 3;
+            this.RedOffsetBox.Text = "";
             // 
             // BlueOffset
             // 
@@ -243,13 +243,13 @@
         public System.Windows.Forms.HScrollBar RedGain;
         public System.Windows.Forms.HScrollBar GreenGain;
         public System.Windows.Forms.HScrollBar BlueGain;
-        private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox BlueGainBox;
+        private System.Windows.Forms.RichTextBox GreenGainBox;
+        private System.Windows.Forms.RichTextBox RedGainBox;
         private System.Windows.Forms.GroupBox OffsetBox;
-        private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.RichTextBox richTextBox5;
-        private System.Windows.Forms.RichTextBox richTextBox6;
+        private System.Windows.Forms.RichTextBox BlueOffsetBox;
+        private System.Windows.Forms.RichTextBox GreenOffsetBox;
+        private System.Windows.Forms.RichTextBox RedOffsetBox;
         public System.Windows.Forms.HScrollBar BlueOffset;
         public System.Windows.Forms.HScrollBar GreenOffset;
         public System.Windows.Forms.HScrollBar RedOffset;

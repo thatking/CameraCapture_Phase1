@@ -51,6 +51,10 @@ namespace CameraTool
             RedGain.Value = 0;
             GreenGain.Value = 0;
             BlueGain.Value = 0;
+
+            RedGainBox.Clear();
+            GreenGainBox.Clear();
+            BlueGainBox.Clear();
         }
 
         private void ResetOffsets()
@@ -64,9 +68,13 @@ namespace CameraTool
             RedOffset.Value = 0;
             GreenOffset.Value = 0;
             BlueOffset.Value = 0;
+
+            RedOffsetBox.Clear();
+            GreenOffsetBox.Clear();
+            BlueOffsetBox.Clear();
         }
 
-        private void SendEvent()
+        private void SendCfgEvent()
         {
             if (ConfigUpdated != null)
             {
@@ -74,49 +82,64 @@ namespace CameraTool
             }
         }
 
+        private void SendResetEvent()
+        {
+            // we're no longer using lyft cfg
+
+        }
+
         private void RedOffset_Scroll(object sender, ScrollEventArgs e)
         {
             ROffset = e.NewValue;
             offsetUpdated = true;
-            SendEvent();
+            SendCfgEvent();
+
+            RedOffsetBox.Text = ROffset.ToString();
         }
 
         private void GreenOffset_Scroll(object sender, ScrollEventArgs e)
         {
             GOffset = e.NewValue;
             offsetUpdated = true;
-            SendEvent();
+            SendCfgEvent();
+
+            GreenOffsetBox.Text = GOffset.ToString();
         }
 
         private void BlueOffset_Scroll(object sender, ScrollEventArgs e)
         {
             BOffset = e.NewValue;
             offsetUpdated = true;
-            SendEvent();
+            SendCfgEvent();
+
+            BlueOffsetBox.Text = BOffset.ToString();
         }
 
         private void RedGain_Scroll(object sender, ScrollEventArgs e)
         {
-            Debug.Print("Got Event: " + e.Type + " newval: " + e.NewValue + " scroll orient" + e.ScrollOrientation);
-
-            this.AutoScroll = true;
             rGain = e.NewValue;
             gainUpdated = true;
-            SendEvent();
+            SendCfgEvent();
+
+            RedGainBox.Text = rGain.ToString();
         }
 
         private void GreenGain_Scroll(object sender, ScrollEventArgs e)
         {
             gGain = e.NewValue;
             gainUpdated = true;
-            SendEvent();
+            SendCfgEvent();
+
+            GreenGainBox.Text = gGain.ToString();
         }
 
         private void BlueGain_Scroll(object sender, ScrollEventArgs e)
         {
             bGain = e.NewValue;
             gainUpdated = true;
-            SendEvent();
+            SendCfgEvent();
+
+            BlueGainBox.Text = bGain.ToString();
         }
 
         private void Reset_Gain_Click(object sender, EventArgs e)
@@ -128,6 +151,5 @@ namespace CameraTool
         {
             ResetOffsets();
         }
-        
     }
 }
