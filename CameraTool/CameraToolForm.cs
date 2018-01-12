@@ -83,6 +83,7 @@ namespace CameraTool
 
         private RegRW_ModeSET frmRegRW_MODESET;
         private ConfigForm configurationForm;
+        private LyftConfigForm lyftConfigForm;
 
         // for Register Setting
         private string m_RegisterSetting;
@@ -128,6 +129,7 @@ namespace CameraTool
 
             frmRegRW_MODESET = new RegRW_ModeSET();
             configurationForm = new ConfigForm();
+            lyftConfigForm = new LyftConfigForm();
             frmSetTriggerDelay = new SetTriggerDelay();
             frmCameraPropWin = new CameraPropWin();
             frmCameraPropWin.Gain.curValue = m_curGain;
@@ -159,6 +161,9 @@ namespace CameraTool
 
             // add event for configure update on GUI
             configurationForm.ConfigUpdated += new ConfigForm.configUpdatedHandler(updateParamFromConfiguration);
+
+            // add event handler for lyft cfg updates
+            lyftConfigForm.ConfigUpdated += new LyftConfigForm.lyftCfgUpdateHandler(UpdateParamFromLyftConfig);
 
             // load default values from xml file.
             m_CameraDefaultMode = configurationForm.CameraDefaultMode;
@@ -815,6 +820,7 @@ namespace CameraTool
                 optionsToolStripMenuItem.Enabled = false;
                 resolutionToolStripMenuItem.Enabled = false;
                 framerateToolStripMenuItem.Enabled = false;
+                lyftToolStripMenuItem.Enabled = false;
 
                 CloseCamera();
 
@@ -919,6 +925,7 @@ namespace CameraTool
                 optionsToolStripMenuItem.Enabled = true;
                 resolutionToolStripMenuItem.Enabled = true;
                 framerateToolStripMenuItem.Enabled = true;
+                lyftToolStripMenuItem.Enabled = true;
 
                 // only ar0130_ap0100 camera supports flash update
                 if (capture.cameraModel == LPCamera.CameraModel.AR0130_AP0100)
@@ -1737,6 +1744,7 @@ namespace CameraTool
                 triggerModeToolStripMenuItem.Enabled = false;
                 autoTriggerToolStripMenuItem.Enabled = false;
                 framerateToolStripMenuItem.Enabled = false;
+                lyftToolStripMenuItem.Enabled = false;
 
                 m_AutoTrigger = false;
 
@@ -2993,6 +3001,11 @@ namespace CameraTool
             configurationForm.Show();
         }
 
+        private void LyftCfgMenuItem_Click(object sender, EventArgs e)
+        {
+            lyftConfigForm.Show();
+        }
+
         private void updateParamFromConfiguration(object sender, EventArgs e)
         {
             m_FocusProcDownSample = configurationForm.FocusProcDownSampling;
@@ -3021,6 +3034,24 @@ namespace CameraTool
 
             mCaptureFrameNum = configurationForm.CaptureNum;
             
+        }
+
+        private void UpdateParamFromLyftConfig(object sender, EventArgs e)
+        {
+            //if (lyftConfigForm.GainUpdated)
+            //{
+            //    r_gain = lyftConfigForm.RGain;
+            //    g_gain = lyftConfigForm.GGain;
+            //    b_gain = lyftConfigForm.BGain;
+            //}
+            //if (lyftConfigForm.OffsetUpdated)
+            //{
+            //    r_offset = lyftConfigForm.ROffset;
+            //    g_offset = lyftConfigForm.GOffset;
+            //    b_offset = lyftConfigForm.BOffset;
+            //}
+
+            Debug.Print("Lyft config update handler invoked");
         }
 
         private void updateRegisterSettingFromConfiguration(LeopardCamera.LPCamera.CameraModel cameraid)

@@ -82,6 +82,12 @@ namespace CameraTool
         }
 
         private bool m_CaptureBMP;
+
+        private void ConfigForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public bool CaptureBMP
         {
             get { return m_CaptureBMP; }
