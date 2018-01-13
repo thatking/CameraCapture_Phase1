@@ -23,7 +23,7 @@ namespace LeopardCamera
 
         // Store videos in My Videos by default
         // TODO KB: do we need an option to change this
-        string vLogFileDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
+        string vLogFileDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyVideos) + "\\";
 
         public bool InProgess { get => inProgess;}
 
@@ -42,7 +42,8 @@ namespace LeopardCamera
         private void StartWriter(int width, int height)
         {
             Debug.Print("Default Directory: " + vLogFileDirectory);
-            vLogFile = (DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")) + ".avi";
+            vLogFile = vLogFileDirectory + vLogFilePrefix + 
+                        (DateTime.Now.ToString("yy-MM-dd-HH-mm-ss")) + ".avi";
 
             Debug.Print("Logging to " + vLogFile);
 
