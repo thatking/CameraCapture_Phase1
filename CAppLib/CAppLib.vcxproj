@@ -58,11 +58,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IntDir>$(Configuration)</IntDir>
-    <OutDir>C:\Users\lyft\Downloads\CameraTool_SDK_IMX390\CameraTool\bin\x86\Debug</OutDir>
+    <OutDir>$(SolutionDir)$(AppxManifestMetadataClTargetArchDir)\bin\$(configuration)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>C:\Users\lyft\Downloads\CameraTool_SDK_IMX390\CameraTool\bin\x86\Debug</OutDir>
+    <OutDir>$(SolutionDir)$(AppxManifestMetadataClTargetArchDir)\bin\$(configuration)</OutDir>
     <IntDir>$(Configuration)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

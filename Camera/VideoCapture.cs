@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
+using AForge.Video;
 using AForge.Video.FFMPEG;
 
 namespace LeopardCamera

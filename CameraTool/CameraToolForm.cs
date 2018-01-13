@@ -3003,7 +3003,7 @@ namespace CameraTool
 
         private void LyftCfgMenuItem_Click(object sender, EventArgs e)
         {
-            lyftConfigForm.Show();
+            lyftConfigForm.ShowDialog();
         }
 
         private void updateParamFromConfiguration(object sender, EventArgs e)
@@ -3038,20 +3038,29 @@ namespace CameraTool
 
         private void UpdateParamFromLyftConfig(object sender, EventArgs e)
         {
-            //if (lyftConfigForm.GainUpdated)
-            //{
-            //    r_gain = lyftConfigForm.RGain;
-            //    g_gain = lyftConfigForm.GGain;
-            //    b_gain = lyftConfigForm.BGain;
-            //}
-            //if (lyftConfigForm.OffsetUpdated)
-            //{
-            //    r_offset = lyftConfigForm.ROffset;
-            //    g_offset = lyftConfigForm.GOffset;
-            //    b_offset = lyftConfigForm.BOffset;
-            //}
+            Debug.Print("got {0} event from {1}", e.GetType(), sender.GetType());
+            if (e.GetType() == typeof(System.Windows.Forms.MouseEventArgs))
+            {
+                if (sender.Equals(this.lyftConfigForm.Reset_Gain))
+                {
+                    m_RGBGainOffsetEna = false;
+                    return;
+                }
+            }
 
-            Debug.Print("Lyft config update handler invoked");
+            m_RGBGainOffsetEna = true;
+            if (lyftConfigForm.GainUpdated)
+            {
+                r_gain = lyftConfigForm.RGain;
+                g_gain = lyftConfigForm.GGain;
+                b_gain = lyftConfigForm.BGain;
+            }
+            if (lyftConfigForm.OffsetUpdated)
+            {
+                r_offset = lyftConfigForm.ROffset;
+                g_offset = lyftConfigForm.GOffset;
+                b_offset = lyftConfigForm.BOffset;
+            }
         }
 
         private void updateRegisterSettingFromConfiguration(LeopardCamera.LPCamera.CameraModel cameraid)

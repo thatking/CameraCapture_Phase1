@@ -74,25 +74,19 @@ namespace CameraTool
             BlueOffsetBox.Clear();
         }
 
-        private void SendCfgEvent()
+        private void SendEvent(object sender, EventArgs e)
         {
             if (ConfigUpdated != null)
             {
-                ConfigUpdated(this, null);
+                ConfigUpdated(sender, e);
             }
-        }
-
-        private void SendResetEvent()
-        {
-            // we're no longer using lyft cfg
-
         }
 
         private void RedOffset_Scroll(object sender, ScrollEventArgs e)
         {
             ROffset = e.NewValue;
             offsetUpdated = true;
-            SendCfgEvent();
+            SendEvent(sender, e);
 
             RedOffsetBox.Text = ROffset.ToString();
         }
@@ -101,7 +95,7 @@ namespace CameraTool
         {
             GOffset = e.NewValue;
             offsetUpdated = true;
-            SendCfgEvent();
+            SendEvent(sender, e);
 
             GreenOffsetBox.Text = GOffset.ToString();
         }
@@ -110,7 +104,7 @@ namespace CameraTool
         {
             BOffset = e.NewValue;
             offsetUpdated = true;
-            SendCfgEvent();
+            SendEvent(sender, e);
 
             BlueOffsetBox.Text = BOffset.ToString();
         }
@@ -119,7 +113,7 @@ namespace CameraTool
         {
             rGain = e.NewValue;
             gainUpdated = true;
-            SendCfgEvent();
+            SendEvent(sender, e);
 
             RedGainBox.Text = rGain.ToString();
         }
@@ -128,7 +122,7 @@ namespace CameraTool
         {
             gGain = e.NewValue;
             gainUpdated = true;
-            SendCfgEvent();
+            SendEvent(sender, e);
 
             GreenGainBox.Text = gGain.ToString();
         }
@@ -137,7 +131,7 @@ namespace CameraTool
         {
             bGain = e.NewValue;
             gainUpdated = true;
-            SendCfgEvent();
+            SendEvent(sender, e);
 
             BlueGainBox.Text = bGain.ToString();
         }
@@ -145,11 +139,13 @@ namespace CameraTool
         private void Reset_Gain_Click(object sender, EventArgs e)
         {
             ResetGains();
+            SendEvent(sender, e);
         }
 
         private void Reset_Offset_Click(object sender, EventArgs e)
         {
             ResetOffsets();
+            SendEvent(sender, e);
         }
     }
 }

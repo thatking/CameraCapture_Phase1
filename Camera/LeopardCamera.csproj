@@ -81,7 +81,38 @@
     <Compile Include="VideoCapture.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="avcodec-53.dll" />
+    <Content Include="..\Dlls\avcodec-53.dll">
+      <Link>avcodec-53.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Dlls\avdevice-53.dll">
+      <Link>avdevice-53.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Dlls\avfilter-2.dll">
+      <Link>avfilter-2.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Dlls\avformat-53.dll">
+      <Link>avformat-53.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Dlls\avutil-51.dll">
+      <Link>avutil-51.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Dlls\postproc-52.dll">
+      <Link>postproc-52.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Dlls\swresample-0.dll">
+      <Link>swresample-0.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Dlls\swscale-2.dll">
+      <Link>swscale-2.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -253,7 +253,7 @@
         public System.Windows.Forms.HScrollBar BlueOffset;
         public System.Windows.Forms.HScrollBar GreenOffset;
         public System.Windows.Forms.HScrollBar RedOffset;
-        private System.Windows.Forms.Button Reset_Gain;
-        private System.Windows.Forms.Button Reset_Offset;
+        public System.Windows.Forms.Button Reset_Gain;
+        public System.Windows.Forms.Button Reset_Offset;
     }
 }
