@@ -19,9 +19,11 @@ namespace CameraTool
         int rOffset = 0;
         int gOffset = 0;
         int bOffset = 0;
+        double gamma = 0.0;
 
         bool gainUpdated = false;
         bool offsetUpdated = false;
+        bool gammaUpdated = false;
 
         public delegate void lyftCfgUpdateHandler(object sender, EventArgs e);
         public event lyftCfgUpdateHandler ConfigUpdated;
@@ -29,11 +31,14 @@ namespace CameraTool
         public int RGain { get => rGain; set => rGain = value; }
         public int GGain { get => gGain; set => gGain = value; }
         public int BGain { get => bGain; set => bGain = value; }
-        public bool GainUpdated { get => gainUpdated; set => gainUpdated = value; }
-        public bool OffsetUpdated { get => offsetUpdated; set => offsetUpdated = value; }
         public int ROffset { get => rOffset; set => rOffset = value; }
         public int GOffset { get => gOffset; set => gOffset = value; }
         public int BOffset { get => bOffset; set => bOffset = value; }
+        public double Gamma { get => gamma; set => gamma = value; }
+
+        public bool GainUpdated { get => gainUpdated; set => gainUpdated = value; }
+        public bool OffsetUpdated { get => offsetUpdated; set => offsetUpdated = value; }
+        public bool GammaUpdated { get => gammaUpdated; set => gammaUpdated = value; }
 
         public LyftConfigForm()
         {
@@ -80,6 +85,15 @@ namespace CameraTool
             {
                 ConfigUpdated(sender, e);
             }
+        }
+
+        private void ResetGamma()
+        {
+            gamma = 0.0;
+            gammaUpdated = false;
+
+            GammaCorrect.Value = 0;
+            GammaValBox.Clear();
         }
 
         private void RedOffset_Scroll(object sender, ScrollEventArgs e)
@@ -146,6 +160,22 @@ namespace CameraTool
         {
             ResetOffsets();
             SendEvent(sender, e);
+        }
+
+        private void Reset_Gamma_Click(object sender, EventArgs e)
+        {
+            ResetGamma();
+            SendEvent(sender, e);
+        }
+
+        private void GammaCorrect_Scroll(object sender, ScrollEventArgs e)
+        {
+            int gamma_int = e.NewValue;
+            gamma = (gamma_int) / 100.0;
+            GammaUpdated = true;
+            SendEvent(sender, e);
+
+            GammaValBox.Text = gamma.ToString();
         }
     }
 }

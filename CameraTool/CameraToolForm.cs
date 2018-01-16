@@ -3046,6 +3046,12 @@ namespace CameraTool
                     m_RGBGainOffsetEna = false;
                     return;
                 }
+
+                if (sender.Equals(this.lyftConfigForm.Reset_Gamma))
+                {
+                    m_GammaEna = false;
+                    return;
+                }
             }
 
             m_RGBGainOffsetEna = true;
@@ -3060,6 +3066,11 @@ namespace CameraTool
                 r_offset = lyftConfigForm.ROffset;
                 g_offset = lyftConfigForm.GOffset;
                 b_offset = lyftConfigForm.BOffset;
+            }
+
+            if (lyftConfigForm.GammaUpdated)
+            {
+                m_GammaValue = lyftConfigForm.Gamma;
             }
         }
 

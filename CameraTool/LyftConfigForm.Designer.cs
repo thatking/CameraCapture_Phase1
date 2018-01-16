@@ -36,6 +36,7 @@
             this.RedGainBox = new System.Windows.Forms.RichTextBox();
             this.BlueGain = new System.Windows.Forms.HScrollBar();
             this.GreenGain = new System.Windows.Forms.HScrollBar();
+            this.RedGain = new System.Windows.Forms.HScrollBar();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.OffsetBox = new System.Windows.Forms.GroupBox();
             this.Reset_Offset = new System.Windows.Forms.Button();
@@ -45,10 +46,14 @@
             this.BlueOffset = new System.Windows.Forms.HScrollBar();
             this.GreenOffset = new System.Windows.Forms.HScrollBar();
             this.RedOffset = new System.Windows.Forms.HScrollBar();
-            this.RedGain = new System.Windows.Forms.HScrollBar();
+            this.GammaCorrection = new System.Windows.Forms.GroupBox();
+            this.GammaCorrect = new System.Windows.Forms.HScrollBar();
+            this.GammaValBox = new System.Windows.Forms.RichTextBox();
+            this.Reset_Gamma = new System.Windows.Forms.Button();
             this.GainBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.OffsetBox.SuspendLayout();
+            this.GammaCorrection.SuspendLayout();
             this.SuspendLayout();
             // 
             // GainBox
@@ -124,6 +129,17 @@
             this.GreenGain.Size = new System.Drawing.Size(585, 49);
             this.GreenGain.TabIndex = 1;
             this.GreenGain.Scroll += new System.Windows.Forms.ScrollEventHandler(this.GreenGain_Scroll);
+            // 
+            // RedGain
+            // 
+            this.RedGain.BackColor = global::CameraTool.Properties.Settings.Default.color;
+            this.RedGain.LargeChange = 25;
+            this.RedGain.Location = new System.Drawing.Point(72, 60);
+            this.RedGain.Maximum = 800;
+            this.RedGain.Name = "RedGain";
+            this.RedGain.Size = new System.Drawing.Size(585, 49);
+            this.RedGain.TabIndex = 0;
+            this.RedGain.Scroll += new System.Windows.Forms.ScrollEventHandler(this.RedGain_Scroll);
             // 
             // OffsetBox
             // 
@@ -209,22 +225,53 @@
             this.RedOffset.TabIndex = 0;
             this.RedOffset.Scroll += new System.Windows.Forms.ScrollEventHandler(this.RedOffset_Scroll);
             // 
-            // RedGain
+            // GammaCorrection
             // 
-            this.RedGain.BackColor = global::CameraTool.Properties.Settings.Default.color;
-            this.RedGain.LargeChange = 25;
-            this.RedGain.Location = new System.Drawing.Point(72, 60);
-            this.RedGain.Maximum = 800;
-            this.RedGain.Name = "RedGain";
-            this.RedGain.Size = new System.Drawing.Size(585, 49);
-            this.RedGain.TabIndex = 0;
-            this.RedGain.Scroll += new System.Windows.Forms.ScrollEventHandler(this.RedGain_Scroll);
+            this.GammaCorrection.Controls.Add(this.Reset_Gamma);
+            this.GammaCorrection.Controls.Add(this.GammaValBox);
+            this.GammaCorrection.Controls.Add(this.GammaCorrect);
+            this.GammaCorrection.Location = new System.Drawing.Point(0, 509);
+            this.GammaCorrection.Name = "GammaCorrection";
+            this.GammaCorrection.Size = new System.Drawing.Size(696, 273);
+            this.GammaCorrection.TabIndex = 8;
+            this.GammaCorrection.TabStop = false;
+            this.GammaCorrection.Text = "Gamma Correction";
+            // 
+            // GammaCorrect
+            // 
+            this.GammaCorrect.LargeChange = 2;
+            this.GammaCorrect.Location = new System.Drawing.Point(72, 71);
+            this.GammaCorrect.Maximum = 200;
+            this.GammaCorrect.Name = "GammaCorrect";
+            this.GammaCorrect.Size = new System.Drawing.Size(585, 49);
+            this.GammaCorrect.TabIndex = 0;
+            this.GammaCorrect.Scroll += new System.Windows.Forms.ScrollEventHandler(this.GammaCorrect_Scroll);
+            // 
+            // GammaValBox
+            // 
+            this.GammaValBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GammaValBox.Location = new System.Drawing.Point(6, 71);
+            this.GammaValBox.Name = "GammaValBox";
+            this.GammaValBox.Size = new System.Drawing.Size(63, 49);
+            this.GammaValBox.TabIndex = 7;
+            this.GammaValBox.Text = "";
+            // 
+            // Reset_Gamma
+            // 
+            this.Reset_Gamma.Location = new System.Drawing.Point(242, 218);
+            this.Reset_Gamma.Name = "Reset_Gamma";
+            this.Reset_Gamma.Size = new System.Drawing.Size(171, 49);
+            this.Reset_Gamma.TabIndex = 7;
+            this.Reset_Gamma.Text = "Reset";
+            this.Reset_Gamma.UseVisualStyleBackColor = true;
+            this.Reset_Gamma.Click += new System.EventHandler(this.Reset_Gamma_Click);
             // 
             // LyftConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1474, 1429);
+            this.ClientSize = new System.Drawing.Size(1474, 801);
+            this.Controls.Add(this.GammaCorrection);
             this.Controls.Add(this.OffsetBox);
             this.Controls.Add(this.GainBox);
             this.Name = "LyftConfigForm";
@@ -232,6 +279,7 @@
             this.GainBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.OffsetBox.ResumeLayout(false);
+            this.GammaCorrection.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -255,5 +303,9 @@
         public System.Windows.Forms.HScrollBar RedOffset;
         public System.Windows.Forms.Button Reset_Gain;
         public System.Windows.Forms.Button Reset_Offset;
+        private System.Windows.Forms.GroupBox GammaCorrection;
+        private System.Windows.Forms.RichTextBox GammaValBox;
+        private System.Windows.Forms.HScrollBar GammaCorrect;
+        public System.Windows.Forms.Button Reset_Gamma;
     }
 }
