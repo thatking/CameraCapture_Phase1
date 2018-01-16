@@ -132,6 +132,9 @@
             this.richTextBoxBatchCmd = new System.Windows.Forms.RichTextBox();
             this.buttonBatchCmdExec = new System.Windows.Forms.Button();
             this.buttonBatchCmdLoad = new System.Windows.Forms.Button();
+            this.imageStreamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LyftImageStreamStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.LyftImageStreamStop = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictBDisplay)).BeginInit();
@@ -514,6 +517,7 @@
             // 
             this.lyftToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.recordToolStripMenuItem,
+            this.imageStreamToolStripMenuItem,
             this.configureToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.lyftToolStripMenuItem.Name = "lyftToolStripMenuItem";
@@ -532,14 +536,14 @@
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(162, 38);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.LyftRecordStartMenuItem_Click);
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(162, 38);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.LyftRecordStopMenuItem_Click);
             // 
@@ -1056,6 +1060,29 @@
             this.buttonBatchCmdLoad.UseVisualStyleBackColor = true;
             this.buttonBatchCmdLoad.Click += new System.EventHandler(this.buttonBatchCmdLoad_Click);
             // 
+            // imageStreamToolStripMenuItem
+            // 
+            this.imageStreamToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LyftImageStreamStart,
+            this.LyftImageStreamStop});
+            this.imageStreamToolStripMenuItem.Name = "imageStreamToolStripMenuItem";
+            this.imageStreamToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.imageStreamToolStripMenuItem.Text = "ImageStream";
+            // 
+            // LyftImageStreamStart
+            // 
+            this.LyftImageStreamStart.Name = "LyftImageStreamStart";
+            this.LyftImageStreamStart.Size = new System.Drawing.Size(268, 38);
+            this.LyftImageStreamStart.Text = "Start";
+            this.LyftImageStreamStart.Click += new System.EventHandler(this.LyftImageStreamStart_Click);
+            // 
+            // LyftImageStreamStop
+            // 
+            this.LyftImageStreamStop.Name = "LyftImageStreamStop";
+            this.LyftImageStreamStop.Size = new System.Drawing.Size(268, 38);
+            this.LyftImageStreamStop.Text = "Stop";
+            this.LyftImageStreamStop.Click += new System.EventHandler(this.LyftImageStreamStop_Click);
+            // 
             // CameraToolForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1207,6 +1234,9 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imageStreamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LyftImageStreamStart;
+        private System.Windows.Forms.ToolStripMenuItem LyftImageStreamStop;
     }
 }
 

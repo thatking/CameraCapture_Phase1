@@ -75,6 +75,7 @@
     <Compile Include="ImageCaptureInternal.cs" />
     <Compile Include="LPCamera.cs" />
     <Compile Include="LPCameraInternal.cs" />
+    <Compile Include="LyftImageStream.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="ImageCapture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

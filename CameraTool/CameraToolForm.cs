@@ -31,6 +31,7 @@ namespace CameraTool
     {
         internal LPCamera capture = null;
         internal VideoCapture vLog = null;
+        internal LyftImageStream imLog = null;
 
         private enum CameraType { NO_CAMERA, CYPRESS_USB_BOOT, LEOPARD_CAMERA };
         private CameraType cameraList;
@@ -837,6 +838,8 @@ namespace CameraTool
                     throw e;
                 }
 
+                imLog = new LyftImageStream(true);  // create directory for now
+
                 CameraUUID = "";
                 FuseID = "";
                 HwRev = 0;
@@ -1542,6 +1545,9 @@ namespace CameraTool
 
                         // log frame to videoLogFile if it's enabled
                         vLog.WriteVideoLogFrame(bitmapDraw);
+
+                        // capture the raw unedited bitmap to file (if it's enabled)
+                        imLog.StoreImage(ref bitmap);
 
                         bitmapDraw.Dispose();
                         bitmap.Dispose();
@@ -3800,14 +3806,27 @@ namespace CameraTool
         private void LyftRecordStopMenuItem_Click(object sender, EventArgs e)
         {
             if (vLog.InProgess)
-            {
                 vLog.StopVideoCapture();
+            else
+                MessageBox.Show("No recording in progress. Did you goof up?");
+        }
+
+        private void LyftImageStreamStart_Click(object sender, EventArgs e)
+        {
+            if (imLog.ImLogEnabled)
+            {
+                MessageBox.Show("Already capturing images..");
                 return;
             }
+            imLog.StartImageCapture();
+        }
+
+        private void LyftImageStreamStop_Click(object sender, EventArgs e)
+        {
+            if (imLog.ImLogEnabled)
+                imLog.StopImageCapture();
             else
-            {
-                MessageBox.Show("No recording in progress. Did you goof up?");
-            }
+                MessageBox.Show("We weren't capturing images! Did you goof up?");
         }
     }
 }
