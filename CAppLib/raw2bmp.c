@@ -18,7 +18,9 @@
 #include <string.h>
 #include <fcntl.h>
 
-#define TRUE -1
+#ifndef TRUE
+#define TRUE -1		// lol
+#endif
 #define FALSE 0
 
 typedef unsigned char uint8_t;

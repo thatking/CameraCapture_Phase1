@@ -35,7 +35,6 @@ static void initGammaTable(double gamma, int bpp)
     int result;
 	double dMax;
 	int iMax;
-	unsigned short addr, value;
 
 	if (bpp > 12)
 		return;
@@ -73,7 +72,7 @@ static void gammaCorrection(BYTE* in_bytes, BYTE* out_bytes, int width, int heig
 	else
 	{
 		for (i=0; i<width*height; i++)
-			*out_bytes++ = linear_to_gamma[*in_bytes++];
+			*out_bytes++ = (BYTE)linear_to_gamma[*in_bytes++];
 	}
 
 }
@@ -311,7 +310,6 @@ __declspec(dllexport) int raw_to_bmp(BYTE* in_bytes, BYTE* out_bytes, int width,
 	BYTE* ptr = in_bytes;
 	BYTE* src = in_bytes;
 	WORD* srcWord = (WORD *) in_bytes;
-	unsigned short wTmp[8];
 	unsigned short * wPtr = (unsigned short *)(in_bytes);
 	unsigned short * wSrc = (unsigned short *)in_bytes;
 	//unsigned int ctr = 0;
@@ -712,9 +710,9 @@ static int convert_yuv_to_rgb_pixel(int y, int u, int v)
         int pixel32 = 0;
 		BYTE *pixel = (BYTE *)&pixel32;
         int r, g, b;
-        b = y + (1.370705 * (v-128));
-        g = y - (0.698001 * (v-128)) - (0.337633 * (u-128));
-        r = y + (1.732446 * (u-128));
+        b = (int)(y + (1.370705 * (v-128)));
+        g = (int)(y - (0.698001 * (v-128)) - (0.337633 * (u-128)));
+        r = (int)(y + (1.732446 * (u-128)));
         if(r > 255) r = 255;
         if(g > 255) g = 255;
         if(b > 255) b = 255;
@@ -848,7 +846,6 @@ __declspec(dllexport) int yuv422_to_y(BYTE* in_bytes, BYTE* out_bytes, int width
 __declspec(dllexport) int dual_raw8_to_y(BYTE* in_bytes, int width, int height)
 {
 	int i,j;
-	BYTE tmp;
 	BYTE* line_ptr = in_bytes;
 	BYTE* left = in_bytes;
 	BYTE* right = in_bytes + width/2;
@@ -941,24 +938,24 @@ __declspec(dllexport) int bayer_to_y(BYTE* in_bytes, BYTE* out_bytes, int width,
 			for (j=0; j<width/2; j++)
 			{
 				pixel = *src++;
-				pixel = pixel * grGain;
+				pixel = (short)(pixel * grGain);
 				if (pixel > maxValue) pixel = maxValue;
 				*dst = pixel >> shift_bit;
 
 				pixel = *src++;
-				pixel = pixel * rGain;
+				pixel = (short)(pixel * rGain);
 				if (pixel > maxValue) pixel = maxValue;
 				*dst = pixel >> shift_bit;
 			}
 			for (j=0; j<width/2; j++)
 			{
 				pixel = *src++;
-				pixel = pixel * bGain;
+				pixel = (short)(pixel * bGain);
 				if (pixel > maxValue) pixel = maxValue;
 				*dst = pixel >> shift_bit;
 
 				pixel = *src++;
-				pixel = pixel * gbGain;
+				pixel = (short)(pixel * gbGain);
 				if (pixel > maxValue) pixel = maxValue;
 				*dst = pixel >> shift_bit;
 			}
@@ -1106,14 +1103,14 @@ __declspec(dllexport) void swapByte(BYTE *in_buf, int iWidth, int iHeight, int d
 // crop 5 blocks of the original image to form a 1280x720 image
 __declspec(dllexport) void reframeTo720p(BYTE *out_buf, BYTE *in_buf, int iWidth, int iHeight, int dataWidth)
         {
-            int i, j;
+            int i;
 			int winWidth = 1280/3;
 			int winHeight = 720/3;
 			int bPP = dataWidth > 8 ? 2 : 1; // bytes per pixel
 
 			BYTE *in_tmp, *out_tmp;
 			
-			ZeroMemory(out_tmp, 1280*2*720);
+			//ZeroMemory(out_tmp, 1280*2*720); wont this crash?
 
 			// top window
 			out_tmp = out_buf;
@@ -1164,14 +1161,14 @@ __declspec(dllexport) void reframeTo720p(BYTE *out_buf, BYTE *in_buf, int iWidth
 // top-left, top-right, center, bottom-left, bottom-right
 __declspec(dllexport) void reframeTo720p_4corners(BYTE *out_buf, BYTE *in_buf, int iWidth, int iHeight, int dataWidth)
         {
-            int i, j;
+            int i;
 			int winWidth = 1280/3;
 			int winHeight = 720/3;
 			int bPP = dataWidth > 8 ? 2 : 1; // bytes per pixel
 
 			BYTE *in_tmp, *out_tmp;
 			
-			ZeroMemory(out_tmp, 1280*2*720);
+			//ZeroMemory(out_tmp, 1280*2*720);   wont this crash??
 
 			// top left window
 			out_tmp = out_buf;
