@@ -27,15 +27,18 @@ namespace LeopardCamera
             imLogDir = System.Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\";
             createdDirName = imPrefix + DateTime.Now.ToString("yy-MM-dd-HH-mm-ss") + "\\";
             imLogDir += createdDirName;
-            Debug.Print("Logging images to : " + imLogDir);
-
-            if (!Directory.Exists(imLogDir))
-                Directory.CreateDirectory(imLogDir);
         }
 
         public void StartImageCapture()
         {
             Debug.Print("Starting image capture");
+
+            // create directory before setting flag
+            Debug.Print("Logging images to : " + imLogDir);
+
+            if (!Directory.Exists(imLogDir))
+                Directory.CreateDirectory(imLogDir);
+
             imLogEnabled = true;
         }
 
